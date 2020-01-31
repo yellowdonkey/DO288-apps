@@ -84,7 +84,8 @@ pipeline {
                 }
                 // TODO: Create a new OpenShift application based on the ${APP_NAME}:latest image stream
                 // TODO: Expose the ${APP_NAME} service for external access
-                sh '''oc new-app ${APP_NAME}:latest -n ${DEV_PROJECT} oc expose svc/${APP_NAME} -n ${DEV_PROJECT}'''
+                sh '''oc new-app ${APP_NAME}:latest -n ${DEV_PROJECT} 
+oc expose svc/${APP_NAME} -n ${DEV_PROJECT}'''
 
             }
         }
@@ -119,7 +120,9 @@ pipeline {
 
                 echo '### Creating a new app in Staging ###'
                 // TODO: Create a new app in staging and expose the service
-sh '''oc project ${STAGE_PROJECT} oc new-app --name ${APP_NAME} -i ${APP_NAME}:stage oc expose svc/${APP_NAME}'''
+sh '''oc project ${STAGE_PROJECT} 
+oc new-app --name ${APP_NAME} -i ${APP_NAME}:stage 
+oc expose svc/${APP_NAME}'''
             }
         }
 
